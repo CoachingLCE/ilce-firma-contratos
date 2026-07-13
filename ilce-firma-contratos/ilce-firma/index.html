@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firma de Contrato - Instituto ILCE</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+    background: #f4f2ee;
+    color: #2b2b2b;
+    line-height: 1.55;
+  }
+  h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .contract-box {
+    background: #fff;
+    border: 1px solid #d8d3c9;
+    border-radius: 6px;
+    padding: 28px 30px;
+    margin-bottom: 28px;
+  }
+  .contract-box h2 {
+    font-size: 17px;
+    margin: 22px 0 8px;
+  }
+  .contract-box h2:first-child { margin-top: 0; }
+  .contract-box p { margin: 6px 0; font-size: 15px; }
+  .party-line { font-weight: bold; }
+  .form-box {
+    background: #fff;
+    border: 1px solid #d8d3c9;
+    border-radius: 6px;
+    padding: 24px 26px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .form-box h2 { font-family: Georgia, serif; font-size: 18px; margin-top: 0; }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 16px 0 6px;
+    color: #333;
+  }
+  input[type=text], input[type=number] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid #cfcabf;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+  }
+  .pct-wrap { display: flex; align-items: center; gap: 8px; }
+  .pct-wrap input { width: 100px; }
+  canvas {
+    width: 100%;
+    height: 180px;
+    border: 2px dashed #b9b2a1;
+    border-radius: 6px;
+    background: #fdfcfa;
+    touch-action: none;
+    cursor: crosshair;
+  }
+  .sig-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .sig-actions button {
+    background: none;
+    border: none;
+    color: #8a5a2b;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 22px 0 4px;
+    font-size: 14px;
+  }
+  .checkbox-row input { margin-top: 3px; }
+  button#submitBtn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #8a5a2b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button#submitBtn:disabled {
+    background: #c9b8a3;
+    cursor: not-allowed;
+  }
+  #status {
+    margin-top: 14px;
+    font-size: 14px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  #status.error { color: #b3261e; }
+  #status.ok { color: #1e7a34; }
+  .error-field { color: #b3261e; font-size: 12px; margin-top: 4px; display: none; }
+</style>
+</head>
+<body>
+
+<h1>Instituto ILCE</h1>
+<p class="subtitle">Contrato de prestación de servicios profesionales — Firma digital</p>
+
+<div class="contract-box">
+  <p>Entre, por una parte, <strong>Instituto ILCE</strong>, en adelante “EL INSTITUTO”, y por la otra,
+  <strong>[Nombre y Apellido del/la Docente]</strong>, DNI <strong>[●]</strong>, en adelante “EL/LA DOCENTE”,
+  ambas partes acuerdan celebrar el presente contrato de prestación de servicios profesionales, conforme a las siguientes cláusulas:</p>
+
+  <h2>1. Objeto</h2>
+  <p>EL INSTITUTO contrata a EL/LA DOCENTE para el diseño, desarrollo y/o dictado de un curso en modalidad asincrónica,
+  que será comercializado a través de las plataformas educativas del Instituto ILCE.</p>
+
+  <h2>2. Modalidad del curso</h2>
+  <p>El curso será de modalidad 100% asincrónica, quedando a disposición de los/as estudiantes a través del campus virtual del Instituto.
+  EL/LA DOCENTE se compromete a entregar los contenidos acordados (clases grabadas, materiales y/o recursos pedagógicos)
+  en los plazos previamente definidos entre las partes.</p>
+
+  <h2>3. Duración</h2>
+  <p>El presente contrato tendrá una duración de dos (2) años, contados a partir de la fecha de firma, período durante
+  el cual EL INSTITUTO podrá comercializar y utilizar el curso.</p>
+
+  <h2>4. Remuneración</h2>
+  <p>La remuneración de EL/LA DOCENTE consistirá en un porcentaje sobre el total de las ventas efectivamente cobradas del curso.
+  Dicho porcentaje será acordado previamente entre las partes y podrá constar en un anexo o acuerdo complementario.
+  Los pagos se realizarán de manera periódica, según el esquema administrativo definido por EL INSTITUTO.</p>
+
+  <h2>5. Relación contractual</h2>
+  <p>Las partes acuerdan que la presente contratación no genera relación laboral, tratándose de una prestación de
+  servicios profesionales de carácter independiente. EL/LA DOCENTE será responsable de sus obligaciones impositivas y previsionales.</p>
+
+  <h2>6. Propiedad intelectual y uso del material</h2>
+  <p>El material producido por EL/LA DOCENTE en el marco de este contrato podrá ser utilizado por EL INSTITUTO
+  exclusivamente con fines educativos y comerciales vinculados al curso, durante la vigencia del presente contrato.</p>
+
+  <h2>7. Confidencialidad</h2>
+  <p>EL/LA DOCENTE se compromete a mantener confidencial toda información académica, comercial o interna del Instituto
+  a la que acceda con motivo de este contrato.</p>
+
+  <h2>8. Rescisión</h2>
+  <p>Cualquiera de las partes podrá rescindir el presente contrato sin expresión de causa, notificando a la otra parte
+  con 15 días corridos de anticipación, vía correo electrónico. Para comunicaciones formales, EL INSTITUTO fija como
+  correo válido: administracion@institutoilce.com</p>
+
+  <h2>9. Ley aplicable</h2>
+  <p>El presente contrato se regirá por las leyes de la República Argentina.</p>
+
+  <h2>10. Aceptación</h2>
+  <p>Leído y aceptado, se firma el presente contrato de forma digital, quedando su copia disponible para ambas partes.</p>
+</div>
+
+<div class="form-box">
+  <h2>Completar datos y firmar</h2>
+
+  <label for="nombre">Nombre y Apellido</label>
+  <input type="text" id="nombre" placeholder="Ej: María Fernández">
+  <div class="error-field" id="err-nombre">Completá tu nombre y apellido.</div>
+
+  <label for="dni">DNI</label>
+  <input type="text" id="dni" placeholder="Ej: 30123456">
+  <div class="error-field" id="err-dni">Completá tu DNI.</div>
+
+  <label for="pct">Porcentaje de remuneración acordado</label>
+  <div class="pct-wrap">
+    <input type="number" id="pct" min="0" max="100" step="0.1" placeholder="Ej: 30">
+    <span>%</span>
+  </div>
+  <div class="error-field" id="err-pct">Ingresá el porcentaje acordado con el Instituto.</div>
+
+  <label>Firma digital</label>
+  <canvas id="sigCanvas"></canvas>
+  <div class="sig-actions">
+    <span>Dibujá tu firma arriba con el mouse o el dedo.</span>
+    <button type="button" id="clearSig">Borrar firma</button>
+  </div>
+  <div class="error-field" id="err-sig">Falta tu firma.</div>
+
+  <div class="checkbox-row">
+    <input type="checkbox" id="accept">
+    <label for="accept" style="margin:0; font-weight:normal;">He leído el contrato completo y acepto sus términos y condiciones.</label>
+  </div>
+  <div class="error-field" id="err-accept">Tenés que aceptar los términos para continuar.</div>
+
+  <button id="submitBtn">Firmar y enviar contrato</button>
+  <div id="status"></div>
+</div>
+
+<script>
+  // ---- Firma en canvas ----
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let hasSignature = false;
+
+  function resizeCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+    ctx.scale(ratio, ratio);
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#1a1a1a';
+  }
+  window.addEventListener('resize', () => {
+    const data = hasSignature ? canvas.toDataURL() : null;
+    resizeCanvas();
+    if (data) {
+      const img = new Image();
+      img.onload = () => ctx.drawImage(img, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height);
+      img.src = data;
+    }
+  });
+  resizeCanvas();
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    hasSignature = true;
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }
+  function moveDraw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  }
+  function endDraw(e) { drawing = false; }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', moveDraw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', startDraw);
+  canvas.addEventListener('touchmove', moveDraw);
+  canvas.addEventListener('touchend', endDraw);
+
+  document.getElementById('clearSig').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hasSignature = false;
+  });
+
+  // ---- Envío del formulario ----
+  const submitBtn = document.getElementById('submitBtn');
+  const statusEl = document.getElementById('status');
+
+  function showError(id, show) {
+    document.getElementById('err-' + id).style.display = show ? 'block' : 'none';
+  }
+
+  submitBtn.addEventListener('click', async () => {
+    const nombre = document.getElementById('nombre').value.trim();
+    const dni = document.getElementById('dni').value.trim();
+    const pct = document.getElementById('pct').value.trim();
+    const accept = document.getElementById('accept').checked;
+
+    let valid = true;
+    showError('nombre', !nombre); if (!nombre) valid = false;
+    showError('dni', !dni); if (!dni) valid = false;
+    showError('pct', !pct); if (!pct) valid = false;
+    showError('sig', !hasSignature); if (!hasSignature) valid = false;
+    showError('accept', !accept); if (!accept) valid = false;
+
+    if (!valid) {
+      statusEl.textContent = 'Por favor completá los datos faltantes.';
+      statusEl.className = 'error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusEl.textContent = 'Generando y enviando el contrato firmado...';
+    statusEl.className = '';
+
+    const signatureDataUrl = canvas.toDataURL('image/png');
+
+    try {
+      const res = await fetch('/api/send-contract', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, dni, pct, signatureDataUrl })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        statusEl.textContent = '¡Listo! El contrato firmado fue enviado correctamente al Instituto.';
+        statusEl.className = 'ok';
+        submitBtn.textContent = 'Enviado ✓';
+      } else {
+        throw new Error(data.error || 'Error desconocido');
+      }
+    } catch (err) {
+      statusEl.textContent = 'Ocurrió un error al enviar el contrato: ' + err.message + '. Volvé a intentar.';
+      statusEl.className = 'error';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
