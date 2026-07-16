@@ -14,13 +14,19 @@ const CLAUSES = [
   { title: '1. Objeto', body: 'EL INSTITUTO contrata a EL/LA DOCENTE para el diseño, desarrollo y/o dictado de un curso en modalidad asincrónica, que será comercializado a través de las plataformas educativas del Instituto ILCE.' },
   { title: '2. Modalidad del curso', body: 'El curso será de modalidad 100% asincrónica, quedando a disposición de los/as estudiantes a través del campus virtual del Instituto. EL/LA DOCENTE se compromete a entregar los contenidos acordados (clases grabadas, materiales y/o recursos pedagógicos) en los plazos previamente definidos entre las partes.' },
   { title: '3. Duración', body: 'El presente contrato tendrá una duración de dos (2) años, contados a partir de la fecha de firma, período durante el cual EL INSTITUTO podrá comercializar y utilizar el curso.' },
-  { title: '4. Remuneración', body: 'La remuneración de EL/LA DOCENTE consistirá en un {PCT}% sobre el total de las ventas efectivamente cobradas del curso, porcentaje acordado previamente entre las partes. Los pagos se realizarán de manera periódica, según el esquema administrativo definido por EL INSTITUTO.' },
+  { title: '4. Remuneración', body: 'La remuneración de EL/LA DOCENTE consistirá en un {PCT}% sobre el total de las ventas efectivamente cobradas del curso, porcentaje acordado previamente entre las partes. Los pagos se realizarán de manera periódica, según el esquema administrativo definido por EL INSTITUTO. Dicho porcentaje constituye la única contraprestación por la creación del contenido y por la autorización de uso otorgada en el presente contrato, sin que ello genere derecho a pagos adicionales por futuras reutilizaciones, ediciones o comercialización del curso.' },
   { title: '5. Relación contractual', body: 'Las partes acuerdan que la presente contratación no genera relación laboral, tratándose de una prestación de servicios profesionales de carácter independiente. EL/LA DOCENTE será responsable de sus obligaciones impositivas y previsionales.' },
-  { title: '6. Propiedad intelectual y uso del material', body: 'El material producido por EL/LA DOCENTE en el marco de este contrato podrá ser utilizado por EL INSTITUTO exclusivamente con fines educativos y comerciales vinculados al curso, durante la vigencia del presente contrato.' },
-  { title: '7. Confidencialidad', body: 'EL/LA DOCENTE se compromete a mantener confidencial toda información académica, comercial o interna del Instituto a la que acceda con motivo de este contrato.' },
-  { title: '8. Rescisión', body: 'Cualquiera de las partes podrá rescindir el presente contrato sin expresión de causa, notificando a la otra parte con 15 días corridos de anticipación, vía correo electrónico. Para comunicaciones formales, EL INSTITUTO fija como correo válido: administracion@institutoilce.com' },
-  { title: '9. Ley aplicable', body: 'El presente contrato se regirá por las leyes de la República Argentina.' },
-  { title: '10. Aceptación', body: 'Leído y aceptado, se firma el presente contrato de forma digital, quedando su copia disponible para ambas partes.' },
+  { title: '6. Propiedad intelectual, licencia de uso e imagen', body: [
+      'EL/LA DOCENTE, en su carácter de autor/a del contenido producido en el marco del presente contrato, otorga a EL INSTITUTO una licencia amplia, no exclusiva y por el plazo de vigencia del presente contrato, para utilizar dicho contenido en los cursos actuales y futuros del Instituto, así como en sus plataformas, clases grabadas, materiales complementarios y demás espacios institucionales.',
+      'Asimismo, EL/LA DOCENTE autoriza expresamente a EL INSTITUTO el uso de su imagen, voz, nombre y participación en las grabaciones y materiales producidos, con fines educativos y comerciales vinculados al curso.',
+      'EL/LA DOCENTE autoriza además a EL INSTITUTO a editar, fragmentar, subtitular, adaptar y reutilizar total o parcialmente el contenido producido, cuando resulte necesario, siempre respetando el sentido original de dicho contenido.',
+      'La autorización otorgada en la presente cláusula respecto del uso del material, la imagen, la voz y el nombre de EL/LA DOCENTE no podrá ser revocada respecto de los contenidos ya producidos y publicados por EL INSTITUTO.'
+    ] },
+  { title: '7. Actualización de los cursos', body: 'EL INSTITUTO podrá complementar, modificar o actualizar el contenido del curso, incluso incorporando a otros/as profesionales, cuando ello resulte necesario para mantener la vigencia académica y la calidad del curso.' },
+  { title: '8. Confidencialidad', body: 'EL/LA DOCENTE se compromete a mantener confidencial toda información académica, comercial o interna del Instituto a la que acceda con motivo de este contrato.' },
+  { title: '9. Rescisión', body: 'Cualquiera de las partes podrá rescindir el presente contrato sin expresión de causa, notificando a la otra parte con 15 días corridos de anticipación, vía correo electrónico. Para comunicaciones formales, EL INSTITUTO fija como correo válido: administracion@institutoilce.com' },
+  { title: '10. Ley aplicable', body: 'El presente contrato se regirá por las leyes de la República Argentina.' },
+  { title: '11. Aceptación', body: 'Leído y aceptado, se firma el presente contrato de forma digital, quedando su copia disponible para ambas partes.' },
 ];
 
 function wrapText(text, font, size, maxWidth) {
@@ -85,7 +91,11 @@ async function buildPdf({ nombre, dni, pct, fecha, signaturePngBytes }) {
       newPageIfNeeded(20);
       drawParagraph(clause.title, { size: 12, bold: true, spacingAfter: 4 });
     }
-    drawParagraph(replaced(clause.body), { size: 11, spacingAfter: 12 });
+    const bodies = Array.isArray(clause.body) ? clause.body : [clause.body];
+    bodies.forEach((b, i) => {
+      const isLast = i === bodies.length - 1;
+      drawParagraph(replaced(b), { size: 11, spacingAfter: isLast ? 12 : 6 });
+    });
   }
 
   // Firmas
